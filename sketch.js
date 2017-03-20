@@ -5,6 +5,8 @@ var startTime;
 var player;
 var boxWidth = 50;
 var score = 0;
+var highScore = 0;
+
 var instructions = "Use left & right arrows to move";
 var showInstructions = true;
 function setup() {
@@ -30,7 +32,9 @@ function draw() {
   if(showInstructions){
       instuct();
   }
-  text("score: "+score,50,50);
+  text("Your Score: "+score,50,50);
+  text("Best Score: "+highScore,50,100);
+
   playerControl();
   spawnBoxes(5000);
   avalanche();
@@ -46,7 +50,7 @@ function instuct() {
     if(keyIsPressed && millis()-startTime < 1000){
         showInstructions = false;
     }
-    text(instructions,300,100);
+    text(instructions,200,300);
 }
 
 function reset() {
@@ -82,6 +86,9 @@ function spawnBoxes( spawnTimer) {
         fallingBoxes.add(createSprite(random(width-boxWidth*1.5), 0, boxWidth, boxWidth) );
         startTime = millis();
         score = score + 1;
+        if(score > highScore){
+            highScore = score;
+        }
     }
 }
 
