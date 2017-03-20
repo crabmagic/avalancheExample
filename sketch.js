@@ -43,6 +43,7 @@ function draw() {
   if(player.position.y > height){
       reset();
   }
+    //makes the falling boxes collies, gets pretty hectic
 //  fallingBoxes.bounce(fallingBoxes);
 }
 
